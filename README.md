@@ -1,5 +1,5 @@
 ## HELLO WORLD 👋
-<img src="https://i.pinimg.com/originals/17/28/5f/17285fc448d970cdd53b1b3ba11d7e66.gif" alt="">
+<img src="https://i.pinimg.com/736x/f1/fa/45/f1fa457d376f16bd3c55b2650ca49874.jpg" alt="">
 
 <img src="https://hermes.dio.me/tracks/aa71615b-e701-4cec-bb64-71ba6974c5fe.png" width="70">
 <div style="width: 200px;">
