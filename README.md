@@ -1,9 +1,11 @@
 ## HELLO WORLD 👋
 <img src="https://i.pinimg.com/originals/c8/88/ec/c888ec0f20ad324bf182d51dbe767611.gif" alt="">
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg" height="80px" width="120px" alt="">
 
-<img src="https://hermes.dio.me/tracks/aa71615b-e701-4cec-bb64-71ba6974c5fe.png" width="70">
+<div style="display: flex;">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original-wordmark.svg" height="80px" width="120px" alt="">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg" height="80px" width="120px" alt="">
 <div style="width: 200px;">
+</div>
 
 <a href="https://github.com/joaz0">
 <img loading="lazy" height="150em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=joaz0&layout=compact&langs_count=7&theme=dracula"/>
