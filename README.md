@@ -2,8 +2,8 @@
 
 <img src="https://hermes.dio.me/tracks/aa71615b-e701-4cec-bb64-71ba6974c5fe.png" width="70">
 <div style="width: 200px;">
-<a href="https://github.com/Joaz0/github-readme-stats">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/joaz0&langs_count=8" alt="Top Langs" />
+  <a href="https://github.com/joaz0">
+  <img loading="lazy" height="150em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=joaz0&layout=compact&langs_count=7&theme=dracula"/>
 </a>
 </div>
 
