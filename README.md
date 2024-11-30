@@ -1,6 +1,8 @@
 ## HELLO WORLD 👋
 <img src="https://i.pinimg.com/originals/c8/88/ec/c888ec0f20ad324bf182d51dbe767611.gif" alt="">
 
+<img src="https://i.pinimg.com/736x/0b/80/81/0b80819d6fb2db65ab856fc22befa912.jpg" alt="">
+
 <img src="https://hermes.dio.me/tracks/aa71615b-e701-4cec-bb64-71ba6974c5fe.png" width="70">
 <div style="width: 200px;">
 
