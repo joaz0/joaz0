@@ -3,7 +3,7 @@
 
 <div style="display: flex;">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original-wordmark.svg" height="80px" width="120px" alt="">
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg" height="80px" width="220px" alt="">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg" height="80px" width="120px" alt="">
 <div style="width: 200px;">
 </div>
 
