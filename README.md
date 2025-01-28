@@ -1,4 +1,4 @@
-##                   <p  align="center">------------------------------------------<br> HELLO WORLD, I'AM JOAZ  ![](https://komarev.com/ghpvc/?username=joaz0-github-joaz0&color=red) <br>-------------------------------------------<br> </p>
+##                   <p  align="center">-------------------------------------------<br> HELLO WORLD, I'AM JOAZ  ![](https://komarev.com/ghpvc/?username=joaz0-github-joaz0&color=red) <br>-------------------------------------------<br> </p>
 
 <img src="https://i.pinimg.com/originals/c8/88/ec/c888ec0f20ad324bf182d51dbe767611.gif" alt="">
 
