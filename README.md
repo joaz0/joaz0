@@ -1,4 +1,5 @@
-## HELLO WORLD 👋
+##                   <p  align="center"> <span><<</span>-------------<br> HELLO WORLD, I'AM JOAZ  ![](https://komarev.com/ghpvc/?username=joaz0-github-joaz0&color=red) <br>-------------<span>>></span><br> </p>
+
 <img src="https://i.pinimg.com/originals/c8/88/ec/c888ec0f20ad324bf182d51dbe767611.gif" alt="">
 
 <div style="display: flex;">
@@ -6,17 +7,16 @@
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg" height="80px" width="120px" alt="">
 <div style="width: 200px;">
 </div>
-
 </a>
 </div>
 <a href="app.lofi.co">
 <a href="app.lofi.co">    
-<img height="150rem" width="300rem"  alt="joaz0 GitHub Stats" src="https://awesome-github-stats.azurewebsites.net/user-stats/joaz0?cardType=github&theme=synthwave" />  </a>
+<img height="150rem" width="300rem"  alt="joaz0 GitHub Stats" src="https://awesome-github-stats.azurewebsites.net/user-stats/joaz0?cardType=github&theme=github-dark" />  </a>
 
-<a href="https://github.com/joaz0">
-<img loading="lazy" height="150em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=joaz0&layout=compact&langs_count=7&theme=dracula"/>
+<a
+  href="https://github.com/joaz0">
+  <img loading="lazy" height="150em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=joaz0&layout=compact&langs_count=7&theme=github-dark" />
 
-  
 <a href="joazrodrigues21@gmail.com">
 <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white"/>  
 </a>
