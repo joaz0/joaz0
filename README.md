@@ -1,7 +1,6 @@
 ##                   <p  align="center">-------------------------------------------<br> HELLO WORLD, I'AM JOAZ  ![](https://komarev.com/ghpvc/?username=joaz0-github-joaz0&color=red) <br>-------------------------------------------<br> </p>
 
 <img src="https://i.pinimg.com/originals/c8/88/ec/c888ec0f20ad324bf182d51dbe767611.gif" alt="">
-
 <div align="center">
 <a href="https://app.lofi.co">
   <img loading="lazy" height="150rem" width="300rem" src="https://github-readme-stats.vercel.app/api?username=joaz0&layout=compact&theme=github_dark_dimmed&show_icons=true" alt="GitHub Stats" /> </a> </div>
