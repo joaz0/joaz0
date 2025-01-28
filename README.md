@@ -7,13 +7,15 @@
 <div style="width: 200px;">
 </div>
 
-<a href="https://github.com/joaz0">
-<img loading="lazy" height="150em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=joaz0&layout=compact&langs_count=7&theme=dracula"/>
 </a>
 </div>
 <a href="app.lofi.co">
 <a href="app.lofi.co">    
 <img height="150rem" width="300rem"  alt="joaz0 GitHub Stats" src="https://awesome-github-stats.azurewebsites.net/user-stats/joaz0?cardType=github&theme=synthwave" />  </a>
+
+<a href="https://github.com/joaz0">
+<img loading="lazy" height="150em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=joaz0&layout=compact&langs_count=7&theme=dracula"/>
+
   
 <a href="joazrodrigues21@gmail.com">
 <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white"/>  
