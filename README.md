@@ -12,7 +12,7 @@
 <div style="display: flex; justify-content: center; gap: 20px;">
   <img src="https://raw.githubusercontent.com/devicons/devicon/ca28c779441053191ff11710fe24a9e6c23690d6/icons/python/python-original.svg" height="50px" alt="Python">
   <img src="https://raw.githubusercontent.com/devicons/devicon/ca28c779441053191ff11710fe24a9e6c23690d6/icons/mysql/mysql-original.svg" height="50px" alt="MySQL">
-  <img scr="https://raw.githubusercontent.com/devicons/devicon/ca28c779441053191ff11710fe24a9e6c23690d6/icons/java/java-plain.svg" height="50px" alt="java"> 
+  <img src="https://raw.githubusercontent.com/devicons/devicon/ca28c779441053191ff11710fe24a9e6c23690d6/icons/java/java-plain.svg" height="50px" alt="java"> 
 </div>
 
   
