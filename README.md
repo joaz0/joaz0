@@ -21,7 +21,6 @@
 <a href="https://www.linkedin.com/in/joaz-rodrigues516b492b0">
   <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" height="30" width="100" alt="LinkedIn">
 </a>
-
-  ![Snake animation](https://github.com/Joaz0/README.md/blob/output/github-contribution-grid-snake.svg)
+ ![Snake animation](https://raw.githubusercontent.com/joaz0/Create-cobrinha-main/output/github-contribution-grid-snake.svg)
 </div>
 </div>
