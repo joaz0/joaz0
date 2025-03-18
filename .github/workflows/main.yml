@@ -15,7 +15,7 @@ jobs:
       - name: Gerar a cobrinha
         uses: Platane/snk@v3
         with:
-          github_user_name: SEU_USUARIO  # Troque pelo seu nome de usuário do GitHub
+          github_user_name: joaz0 # Troque pelo seu nome de usuário do GitHub
           outputs: |
             github-contribution-grid-snake.svg
 
