@@ -5,6 +5,7 @@
 Olá! Meu nome é Joaz, sou um entusiasta da tecnologia e apaixonado por desenvolvimento de software. Atualmente, estou focado em aprender mais sobre Python, Java e Engenharia de Software. Adoro resolver problemas e criar soluções inovadoras!
 
 
+
 <img src="https://i.pinimg.com/originals/c8/88/ec/c888ec0f20ad324bf182d51dbe767611.gif" alt="">
 
 ## GitHub Stats
@@ -21,6 +22,11 @@ Olá! Meu nome é Joaz, sou um entusiasta da tecnologia e apaixonado por desenvo
   </a>
 </div>
 
+
+## Estatísticas de Atividade
+
+![GitHub Streak](https://streak-stats.demolab.com?user=joaz0&theme=github-dark&background=22272E&border=444C56&dates=768390&stroke=768390&ring=539BF5&fire=539BF5&currStreakLabel=539BF5&sideNums=ADBAC7&currStreakNum=ADBAC7&sideLabels=768390)
+
 ## Skills
 <div align="center">
   <img src="https://raw.githubusercontent.com/devicons/devicon/ca28c779441053191ff11710fe24a9e6c23690d6/icons/python/python-original.svg" height="50" alt="Python">
@@ -33,7 +39,13 @@ Olá! Meu nome é Joaz, sou um entusiasta da tecnologia e apaixonado por desenvo
   <img src="https://github.com/joaz0/joaz0/blob/output/github-contribution-grid-snake.svg" alt="Snake animation">
 </div>
 
-
+## Aprendendo Atualmente
+<div align="center">
+  <img src="https://raw.githubusercontent.com/devicons/devicon/ca28c779441053191ff11710fe24a9e6c23690d6/icons/python/python-original.svg" height="50" alt="Python">
+  <img src="https://raw.githubusercontent.com/devicons/devicon/ca28c779441053191ff11710fe24a9e6c23690d6/icons/mysql/mysql-original.svg" height="50" alt="MySQL">
+  <img src="https://raw.githubusercontent.com/devicons/devicon/ca28c779441053191ff11710fe24a9e6c23690d6/icons/java/java-plain.svg" height="50" alt="Java">
+</div>
+ 
 ## Contact Me
 <div align="center">
   <a href="mailto:joazrodrigues21@gmail.com">
