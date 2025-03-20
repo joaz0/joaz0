@@ -22,7 +22,6 @@ Olá! Meu nome é Joaz, sou um entusiasta da tecnologia e apaixonado por desenvo
   </a>
 </div>
 
-
 ## Estatísticas de Atividade
 
 ![GitHub Streak](https://streak-stats.demolab.com?user=joaz0&theme=github-dark&background=22272E&border=444C56&dates=768390&stroke=768390&ring=539BF5&fire=539BF5&currStreakLabel=539BF5&sideNums=ADBAC7&currStreakNum=ADBAC7&sideLabels=768390)
