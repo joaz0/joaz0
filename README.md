@@ -2,28 +2,28 @@
 
 <img src="https://i.pinimg.com/originals/c8/88/ec/c888ec0f20ad324bf182d51dbe767611.gif" alt="">
 
-## GitHub Stats
+
 <div align="center">
   <a href="https://github.com/joaz0">
     <img src="https://github-readme-stats.vercel.app/api?username=joaz0&layout=compact&theme=github_dark_dimmed&show_icons=true" alt="GitHub Stats" />
   </a>
 </div>
 
-## Top Languages
+
 <div align="center">
   <a href="https://github.com/joaz0">
     <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=joaz0&layout=compact&langs_count=7&theme=github_dark_dimmed&show_icons=true" alt="Top Languages" />
   </a>
 </div>
 
-## Skills
+
 <div align="center">
   <img src="https://raw.githubusercontent.com/devicons/devicon/ca28c779441053191ff11710fe24a9e6c23690d6/icons/python/python-original.svg" height="50" alt="Python">
   <img src="https://raw.githubusercontent.com/devicons/devicon/ca28c779441053191ff11710fe24a9e6c23690d6/icons/mysql/mysql-original.svg" height="50" alt="MySQL">
   <img src="https://raw.githubusercontent.com/devicons/devicon/ca28c779441053191ff11710fe24a9e6c23690d6/icons/java/java-plain.svg" height="50" alt="Java">
 </div>
 
-## Contact Me
+
 <div align="center">
   <a href="mailto:joazrodrigues21@gmail.com">
     <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" height="30" width="100" alt="Gmail">
@@ -33,5 +33,5 @@
   </a>
 </div>
 
-## Snake Animation
+
 ![Snake animation](https://github.com/joaz0/joaz0/blob/output/github-contribution-grid-snake.svg)
