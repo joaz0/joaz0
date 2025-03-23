@@ -2,32 +2,23 @@
 
 
 ## Sobre Mim
-Olá! Meu nome é Joaz, sou um entusiasta da tecnologia e apaixonado por desenvolvimento de software. Atualmente, estou focado em aprender mais sobre Python, Java e Engenharia de Software. Adoro resolver problemas e criar soluções inovadoras!
+#Olá! Meu nome é Joaz, sou um entusiasta da tecnologia e apaixonado por desenvolvimento de software. Atualmente, estou focado em aprender mais sobre Python, Java e Engenharia de Software. Adoro resolver problemas e criar soluções inovadoras!
 
 
 
 <img src="https://i.pinimg.com/originals/c8/88/ec/c888ec0f20ad324bf182d51dbe767611.gif" alt="">
 
 ## GitHub Stats
+
 <div align="center">
   <a href="https://github.com/joaz0">
-    <img src="https://github-readme-stats.vercel.app/api?username=joaz0&layout=compact&theme=github_dark_dimmed&show_icons=true" alt="GitHub Stats" />
+    <img src="https://github-readme-stats.vercel.app/api?username=joaz0&layout=compact&theme=github_dark_dimmed&show_icons=true&hide_border=true" alt="GitHub Stats" />
   </a>
-</div>
-
-## Estatísticas de Atividade
-
-<div align="center">
-
-![GitHub Streak](https://streak-stats.demolab.com?user=joaz0&theme=github-dark&background=22272E&border=444C56&dates=768390&stroke=768390&ring=539BF5&fire=539BF5&currStreakLabel=539BF5&sideNums=ADBAC7&currStreakNum=ADBAC7&sideLabels=768390)
-
-</div>
-
-## Top Languages
-<div align="center">
+  <br>
   <a href="https://github.com/joaz0">
-    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=joaz0&layout=compact&langs_count=7&theme=github_dark_dimmed&show_icons=true" alt="Top Languages" />
+    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=joaz0&layout=compact&langs_count=7&theme=github_dark_dimmed&show_icons=true&hide_border=true" alt="Top Languages" />
   </a>
+
 </div>
 
 
