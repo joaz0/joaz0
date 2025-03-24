@@ -2,7 +2,7 @@
 
 
 ## Sobre Mim
-## Olá! Meu nome é Joaz, sou um entusiasta da tecnologia e apaixonado por desenvolvimento de software. Atualmente, estou focado em aprender mais sobre Python, Java e Engenharia de Software. Adoro resolver problemas e criar soluções inovadoras!
+### Olá! Meu nome é Joaz, sou um entusiasta da tecnologia e apaixonado por desenvolvimento de software. Atualmente, estou focado em aprender mais sobre Python, Java e Engenharia de Software. Adoro resolver problemas e criar soluções inovadoras!
 
 
 
