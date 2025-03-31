@@ -14,11 +14,9 @@
   <a href="https://github.com/joaz0">
     <img src="https://github-readme-stats.vercel.app/api?username=joaz0&layout=compact&theme=github_dark_dimmed&show_icons=true&hide_border=true" alt="GitHub Stats" />
   </a>
-  <br>
   <a href="https://github.com/joaz0">
-    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=joaz0&layout=compact&langs_count=7&theme=github_dark_dimmed&show_icons=true&hide_border=true" alt="Top Languages" />
+    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=joaz0&layout=compact&langs_count=10&theme=github_dark_dimmed&include_all_commits=true&hide_border=true" alt="Top Languages" />
   </a>
-
 </div>
 
 
