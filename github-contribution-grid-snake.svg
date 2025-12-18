@@ -1,17 +1,4 @@
 <svg viewBox="0 0 880 192" width="880" height="192" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <filter id="matrix-glow">
-      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-      <feMerge>
-        <feMergeNode in="coloredBlur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    <linearGradient id="module-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0e4429;stop-opacity:1"/>
-      <stop offset="100%" style="stop-color:#26a641;stop-opacity:1"/>
-    </linearGradient>
-  </defs>
   
   <style>
     :root {
