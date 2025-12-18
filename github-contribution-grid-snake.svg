@@ -1,60 +1,117 @@
 <svg viewBox="0 0 880 192" width="880" height="192" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="matrix-glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="module-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0e4429;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#26a641;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+  
   <style>
-    .grid-square {
-      fill: #161b22;
-      shape-rendering: geometricPrecision;
+    :root {
+      --github-dark: #0d1117;
+      --github-border: #30363d;
+      --github-text: #c9d1d9;
+      --github-green-1: #0e4429;
+      --github-green-2: #006d32;
+      --github-green-3: #26a641;
+      --github-green-4: #39d353;
+      --matrix-green: #00ff41;
+      --matrix-bright: #39ff14;
+      --code-blue: #79c0ff;
+      --code-purple: #d2a8ff;
+      --code-red: #ff7b72;
     }
     
-    /* Contribution levels - GitHub green colors */
-    .level-0 { fill: #161b22; }
-    .level-1 { fill: #0e4429; }
-    .level-2 { fill: #006d32; }
-    .level-3 { fill: #26a641; }
-    .level-4 { fill: #39d353; }
+    .grid-cell {
+      fill: var(--github-dark);
+      shape-rendering: crispEdges;
+      rx: 2;
+      ry: 2;
+    }
     
-    /* Snake animation - Matrix green */
-    .snake {
-      fill: #00ff41;
-      animation: snake-move 12s linear infinite;
-      filter: drop-shadow(0 0 2px #00ff41);
+    .level-0 { fill: #161b22; }
+    .level-1 { fill: var(--github-green-1); }
+    .level-2 { fill: var(--github-green-2); }
+    .level-3 { fill: var(--github-green-3); }
+    .level-4 { fill: var(--github-green-4); }
+    
+    .level-3, .level-4 {
+      animation: github-pulse 3s ease-in-out infinite;
+    }
+    
+    .level-3 { animation-delay: 0.5s; }
+    .level-4 { animation-delay: 1s; }
+    
+    .snake-segment {
+      fill: var(--matrix-green);
+      filter: url(#matrix-glow);
+      rx: 1;
+      ry: 1;
+      animation: snake-slide 12s linear infinite;
     }
     
     .snake-head {
-      fill: #39ff14;
-      animation: snake-move 12s linear infinite;
-      filter: drop-shadow(0 0 6px #39ff14);
-      rx: 3;
+      fill: var(--matrix-bright);
+      filter: url(#matrix-glow);
+      rx: 2;
+      ry: 2;
+      animation: snake-slide 12s linear infinite;
     }
     
-    /* Eating animation */
-    .eaten {
-      animation: eaten 0.3s ease-out forwards;
+    .module-box {
+      fill: #161b22;
+      stroke: var(--github-border);
+      stroke-width: 1;
+      rx: 4;
+      ry: 4;
     }
     
-    /* Code module highlight */
-    .module-highlight {
-      fill: none;
-      stroke: #ff6b6b;
+    .module-title {
+      font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
+      font-size: 10px;
+      fill: var(--code-blue);
+      font-weight: 600;
+    }
+    
+    .module-content {
+      font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
+      font-size: 8px;
+      fill: var(--github-text);
+    }
+    
+    .module-keyword {
+      fill: var(--code-purple);
+    }
+    
+    .module-string {
+      fill: var(--code-red);
+    }
+    
+    .module-number {
+      fill: var(--github-green-4);
+    }
+    
+    .data-flow {
+      stroke: var(--code-blue);
       stroke-width: 1.5;
-      stroke-dasharray: 4,2;
-      animation: highlight-pulse 3s ease-in-out infinite;
+      stroke-dasharray: 4, 3;
+      fill: none;
+      animation: flow-dash 20s linear infinite;
     }
     
-    @keyframes eaten {
-      0% {
-        opacity: 1;
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.3);
-      }
-      100% {
-        opacity: 0;
-        transform: scale(0);
-      }
+    @keyframes github-pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
     }
     
-    @keyframes snake-move {
+    @keyframes snake-slide {
       0% { transform: translate(0, 48px); }
       8.33% { transform: translate(192px, 48px); }
       16.66% { transform: translate(384px, 48px); }
@@ -70,123 +127,198 @@
       100% { transform: translate(0, 48px); }
     }
     
-    @keyframes highlight-pulse {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 0.8; }
+    @keyframes flow-dash {
+      to { stroke-dashoffset: 100; }
     }
   </style>
   
   <!-- Background -->
-  <rect width="880" height="192" fill="#0d1117"/>
+  <rect width="880" height="192" fill="var(--github-dark)"/>
   
-  <!-- Module IDs representation -->
-  <g id="module-ids" opacity="0.7">
-    <text x="20" y="30" font-family="monospace" font-size="10" fill="#8b949e">exports.id = 642;</text>
-    <text x="20" y="45" font-family="monospace" font-size="10" fill="#8b949e">exports.ids = [642];</text>
-    <text x="20" y="60" font-family="monospace" font-size="10" fill="#8b949e">exports.modules = {</text>
-    <text x="40" y="75" font-family="monospace" font-size="10" fill="#8b949e">/***/ 1680:</text>
-    <text x="40" y="90" font-family="monospace" font-size="10" fill="#8b949e">/***/ ((module, __unused_webpack_exports, __webpack_require__) => {</text>
-    <text x="60" y="105" font-family="monospace" font-size="10" fill="#39d353">module.exports = __webpack_require__(7739)</text>
-    <text x="40" y="120" font-family="monospace" font-size="10" fill="#8b949e">/***/ }),</text>
-  </g>
-  
-  <!-- GIF Encoder representation -->
-  <rect class="module-highlight" x="200" y="100" width="160" height="70" rx="4"/>
-  <text x="210" y="120" font-family="monospace" font-size="11" fill="#c9d1d9">GIFEncoder</text>
-  <text x="210" y="140" font-family="monospace" font-size="9" fill="#8b949e">class extends EventEmitter</text>
-  <text x="210" y="155" font-family="monospace" font-size="9" fill="#79c0ff">width, height, algorithm</text>
-  
-  <!-- Contribution Grid -->
-  <g id="grid" transform="translate(400, 16)">
-    <!-- Grid pattern representing code structure -->
-    <rect class="grid-square level-4" x="0" y="0" width="11" height="11" rx="2"/>
-    <rect class="grid-square level-3" x="16" y="0" width="11" height="11" rx="2"/>
-    <rect class="grid-square level-4" x="32" y="0" width="11" height="11" rx="2"/>
-    <rect class="grid-square level-2" x="48" y="0" width="11" height="11" rx="2"/>
-    <rect class="grid-square level-4" x="64" y="0" width="11" height="11" rx="2"/>
-    
-    <rect class="grid-square level-3" x="0" y="16" width="11" height="11" rx="2"/>
-    <rect class="grid-square level-4" x="16" y="16" width="11" height="11" rx="2"/>
-    <rect class="grid-square level-3" x="32" y="16" width="11" height="11" rx="2"/>
-    <rect class="grid-square level-4" x="48" y="16" width="11" height="11" rx="2"/>
-    <rect class="grid-square level-3" x="64" y="16" width="11" height="11" rx="2"/>
-    
-    <rect class="grid-square level-2" x="0" y="32" width="11" height="11" rx="2"/>
-    <rect class="grid-square level-3" x="16" y="32" width="11" height="11" rx="2"/>
-    <rect class="grid-square level-4" x="32" y="32" width="11" height="11" rx="2"/>
-    <rect class="grid-square level-3" x="48" y="32" width="11" height="11" rx="2"/>
-    <rect class="grid-square level-4" x="64" y="32" width="11" height="11" rx="2"/>
-    
-    <rect class="grid-square level-4" x="0" y="48" width="11" height="11" rx="2"/>
-    <rect class="grid-square level-2" x="16" y="48" width="11" height="11" rx="2"/>
-    <rect class="grid-square level-3" x="32" y="48" width="11" height="11" rx="2"/>
-    <rect class="grid-square level-4" x="48" y="48" width="11" height="11" rx="2"/>
-    <rect class="grid-square level-3" x="64" y="48" width="11" height="11" rx="2"/>
-    
-    <rect class="grid-square level-3" x="0" y="64" width="11" height="11" rx="2"/>
-    <rect class="grid-square level-4" x="16" y="64" width="11" height="11" rx="2"/>
-    <rect class="grid-square level-2" x="32" y="64" width="11" height="11" rx="2"/>
-    <rect class="grid-square level-3" x="48" y="64" width="11" height="11" rx="2"/>
-    <rect class="grid-square level-4" x="64" y="64" width="11" height="11" rx="2"/>
-    
-    <!-- Additional weeks -->
-    <rect class="grid-square level-1" x="80" y="0" width="11" height="11" rx="2"/>
-    <rect class="grid-square level-2" x="96" y="0" width="11" height="11" rx="2"/>
-    <rect class="grid-square level-3" x="112" y="0" width="11" height="11" rx="2"/>
-    <rect class="grid-square level-4" x="128" y="0" width="11" height="11" rx="2"/>
-    <rect class="grid-square level-3" x="144" y="0" width="11" height="11" rx="2"/>
-    
-    <rect class="grid-square level-2" x="80" y="16" width="11" height="11" rx="2"/>
-    <rect class="grid-square level-3" x="96" y="16" width="11" height="11" rx="2"/>
-    <rect class="grid-square level-4" x="112" y="16" width="11" height="11" rx="2"/>
-    <rect class="grid-square level-3" x="128" y="16" width="11" height="11" rx="2"/>
-    <rect class="grid-square level-4" x="144" y="16" width="11" height="11" rx="2"/>
-    
-    <rect class="grid-square level-3" x="80" y="32" width="11" height="11" rx="2"/>
-    <rect class="grid-square level-4" x="96" y="32" width="11" height="11" rx="2"/>
-    <rect class="grid-square level-3" x="112" y="32" width="11" height="11" rx="2"/>
-    <rect class="grid-square level-4" x="128" y="32" width="11" height="11" rx="2"/>
-    <rect class="grid-square level-3" x="144" y="32" width="11" height="11" rx="2"/>
-  </g>
-  
-  <!-- Algorithm modules -->
-  <g id="algorithms" transform="translate(600, 100)">
-    <rect class="module-highlight" x="0" y="0" width="120" height="50" rx="4"/>
-    <text x="10" y="20" font-family="monospace" font-size="10" fill="#c9d1d9">LZWEncoder</text>
-    <text x="10" y="35" font-family="monospace" font-size="9" fill="#79c0ff">compress()</text>
-    <text x="10" y="50" font-family="monospace" font-size="9" fill="#79c0ff">encode()</text>
-  </g>
-  
-  <g id="algorithms2" transform="translate(600, 30)">
-    <rect class="module-highlight" x="0" y="0" width="120" height="50" rx="4"/>
-    <text x="10" y="20" font-family="monospace" font-size="10" fill="#c9d1d9">NeuQuant</text>
-    <text x="10" y="35" font-family="monospace" font-size="9" fill="#79c0ff">buildColormap()</text>
-    <text x="10" y="50" font-family="monospace" font-size="9" fill="#79c0ff">lookupRGB()</text>
-  </g>
-  
-  <!-- Snake body segments -->
-  <rect class="snake" x="400" y="64" width="11" height="11" rx="2"/>
-  <rect class="snake" x="384" y="64" width="11" height="11" rx="2"/>
-  <rect class="snake" x="368" y="64" width="11" height="11" rx="2"/>
-  
-  <!-- Snake head -->
-  <rect class="snake-head" x="400" y="64" width="11" height="11"/>
-  
-  <!-- Data flow arrows -->
-  <path d="M300,130 Q340,130 360,110" fill="none" stroke="#79c0ff" stroke-width="1.5" stroke-dasharray="5,3"/>
-  <path d="M520,50 Q560,50 580,70" fill="none" stroke="#79c0ff" stroke-width="1.5" stroke-dasharray="5,3"/>
-  <path d="M520,120 Q560,120 580,100" fill="none" stroke="#79c0ff" stroke-width="1.5" stroke-dasharray="5,3"/>
-  
-  <!-- Stats/Info -->
-  <g id="info">
-    <rect x="650" y="150" width="200" height="30" rx="4" fill="#161b22" stroke="#30363d" stroke-width="1"/>
-    <text x="660" y="170" font-family="monospace" font-size="10" fill="#c9d1d9">
-      GIF Encoder Module <tspan fill="#39d353">v2.0.0</tspan>
+  <!-- Main title -->
+  <g id="title">
+    <rect x="16" y="8" width="848" height="28" fill="#161b22" rx="4"/>
+    <text x="32" y="28" font-family="monospace" font-size="14" fill="var(--github-text)">
+      <tspan fill="var(--code-blue)">webpack</tspan>://<tspan fill="var(--github-green-4)">GIF-Encoder</tspan>/module.<tspan fill="var(--code-red)">js</tspan>
+    </text>
+    <text x="700" y="28" font-family="monospace" font-size="11" fill="var(--github-text)">
+      <tspan fill="var(--github-green-3)">module.id</tspan>=<tspan fill="var(--code-purple)">1680</tspan>
     </text>
   </g>
   
-  <!-- Title -->
-  <text x="400" y="180" font-family="monospace" font-size="12" fill="#c9d1d9">
-    Webpack Module <tspan fill="#79c0ff">1680</tspan> : GIF Encoder <tspan fill="#39d353">Animation</tspan>
-  </text>
+  <!-- Code structure representation -->
+  <g id="code-structure">
+    <!-- Module exports -->
+    <g transform="translate(16, 45)">
+      <rect class="module-box" x="0" y="0" width="200" height="60"/>
+      <text class="module-title" x="10" y="15">exports.modules</text>
+      <text class="module-content" x="10" y="30">
+        <tspan class="module-keyword">const</tspan> GIFEncoder = <tspan class="module-string">require</tspan>(
+        <tspan class="module-number">1680</tspan>)
+      </text>
+      <text class="module-content" x="10" y="45">
+        <tspan class="module-keyword">module</tspan>.exports = { GIFEncoder }
+      </text>
+    </g>
+    
+    <!-- GIFEncoder class -->
+    <g transform="translate(230, 45)">
+      <rect class="module-box" x="0" y="0" width="180" height="80"/>
+      <text class="module-title" x="10" y="15">class GIFEncoder</text>
+      <text class="module-content" x="10" y="30">
+        <tspan class="module-keyword">constructor</tspan>(width, height)
+      </text>
+      <text class="module-content" x="10" y="45">
+        <tspan class="module-keyword">addFrame</tspan>(imageData)
+      </text>
+      <text class="module-content" x="10" y="60">
+        <tspan class="module-keyword">finish</tspan>() → Uint8Array
+      </text>
+    </g>
+    
+    <!-- Algorithms -->
+    <g transform="translate(430, 45)">
+      <rect class="module-box" x="0" y="0" width="150" height="60"/>
+      <text class="module-title" x="10" y="15">Algorithms</text>
+      <text class="module-content" x="10" y="30">
+        LZWEncoder (BITS=<tspan class="module-number">12</tspan>)
+      </text>
+      <text class="module-content" x="10" y="45">
+        NeuQuant (netsize=<tspan class="module-number">256</tspan>)
+      </text>
+    </g>
+  </g>
+  
+  <!-- Data flow arrows -->
+  <g id="data-flow">
+    <path class="data-flow" d="M216,75 Q230,75 240,85" />
+    <path class="data-flow" d="M410,85 Q420,85 430,85" />
+    <path class="data-flow" d="M580,85 Q590,85 600,85" />
+    <circle cx="216" cy="75" r="3" fill="var(--code-blue)"/>
+    <circle cx="430" cy="85" r="3" fill="var(--code-blue)"/>
+    <circle cx="580" cy="85" r="3" fill="var(--code-blue)"/>
+  </g>
+  
+  <!-- GitHub-like contribution grid -->
+  <g id="contribution-grid" transform="translate(600, 40)">
+    <text x="0" y="-5" font-family="monospace" font-size="9" fill="var(--github-text)">Contributions</text>
+    
+    <!-- Grid -->
+    <g transform="translate(0, 0)">
+      <!-- Week columns (15 weeks) -->
+      <g transform="translate(0, 0)">
+        <!-- Row 0 -->
+        <rect class="grid-cell level-1" x="0" y="0" width="10" height="10"/>
+        <rect class="grid-cell level-3" x="14" y="0" width="10" height="10"/>
+        <rect class="grid-cell level-4" x="28" y="0" width="10" height="10"/>
+        <rect class="grid-cell level-2" x="42" y="0" width="10" height="10"/>
+        <rect class="grid-cell level-4" x="56" y="0" width="10" height="10"/>
+        <rect class="grid-cell level-3" x="70" y="0" width="10" height="10"/>
+        <rect class="grid-cell level-4" x="84" y="0" width="10" height="10"/>
+        <rect class="grid-cell level-1" x="98" y="0" width="10" height="10"/>
+        
+        <!-- Row 1 -->
+        <rect class="grid-cell level-3" x="0" y="14" width="10" height="10"/>
+        <rect class="grid-cell level-4" x="14" y="14" width="10" height="10"/>
+        <rect class="grid-cell level-2" x="28" y="14" width="10" height="10"/>
+        <rect class="grid-cell level-4" x="42" y="14" width="10" height="10"/>
+        <rect class="grid-cell level-3" x="56" y="14" width="10" height="10"/>
+        <rect class="grid-cell level-4" x="70" y="14" width="10" height="10"/>
+        <rect class="grid-cell level-2" x="84" y="14" width="10" height="10"/>
+        <rect class="grid-cell level-3" x="98" y="14" width="10" height="10"/>
+        
+        <!-- Row 2 -->
+        <rect class="grid-cell level-4" x="0" y="28" width="10" height="10"/>
+        <rect class="grid-cell level-2" x="14" y="28" width="10" height="10"/>
+        <rect class="grid-cell level-4" x="28" y="28" width="10" height="10"/>
+        <rect class="grid-cell level-3" x="42" y="28" width="10" height="10"/>
+        <rect class="grid-cell level-4" x="56" y="28" width="10" height="10"/>
+        <rect class="grid-cell level-2" x="70" y="28" width="10" height="10"/>
+        <rect class="grid-cell level-4" x="84" y="28" width="10" height="10"/>
+        <rect class="grid-cell level-3" x="98" y="28" width="10" height="10"/>
+        
+        <!-- Row 3 -->
+        <rect class="grid-cell level-1" x="0" y="42" width="10" height="10"/>
+        <rect class="grid-cell level-3" x="14" y="42" width="10" height="10"/>
+        <rect class="grid-cell level-4" x="28" y="42" width="10" height="10"/>
+        <rect class="grid-cell level-3" x="42" y="42" width="10" height="10"/>
+        <rect class="grid-cell level-4" x="56" y="42" width="10" height="10"/>
+        <rect class="grid-cell level-2" x="70" y="42" width="10" height="10"/>
+        <rect class="grid-cell level-4" x="84" y="42" width="10" height="10"/>
+        <rect class="grid-cell level-3" x="98" y="42" width="10" height="10"/>
+        
+        <!-- Row 4 -->
+        <rect class="grid-cell level-2" x="0" y="56" width="10" height="10"/>
+        <rect class="grid-cell level-4" x="14" y="56" width="10" height="10"/>
+        <rect class="grid-cell level-3" x="28" y="56" width="10" height="10"/>
+        <rect class="grid-cell level-4" x="42" y="56" width="10" height="10"/>
+        <rect class="grid-cell level-2" x="56" y="56" width="10" height="10"/>
+        <rect class="grid-cell level-4" x="70" y="56" width="10" height="10"/>
+        <rect class="grid-cell level-3" x="84" y="56" width="10" height="10"/>
+        <rect class="grid-cell level-4" x="98" y="56" width="10" height="10"/>
+      </g>
+      
+      <!-- Snake -->
+      <g id="snake">
+        <rect class="snake-segment" x="600" y="64" width="8" height="8"/>
+        <rect class="snake-segment" x="592" y="64" width="8" height="8"/>
+        <rect class="snake-segment" x="584" y="64" width="8" height="8"/>
+        <rect class="snake-head" x="600" y="64" width="8" height="8"/>
+      </g>
+    </g>
+    
+    <!-- Stats -->
+    <g transform="translate(0, 80)">
+      <rect x="0" y="0" width="118" height="30" fill="#161b22" rx="3"/>
+      <text x="5" y="12" font-family="monospace" font-size="8" fill="var(--github-text)">
+        <tspan fill="var(--github-green-3)">Commits:</tspan> 1680
+      </text>
+      <text x="5" y="24" font-family="monospace" font-size="8" fill="var(--github-text)">
+        <tspan fill="var(--github-green-4)">Current streak:</tspan> 7 days
+      </text>
+    </g>
+  </g>
+  
+  <!-- Bottom info bar -->
+  <g id="info-bar">
+    <rect x="16" y="150" width="848" height="30" fill="#161b22" rx="4"/>
+    
+    <g transform="translate(32, 165)">
+      <circle cx="0" cy="0" r="4" fill="var(--github-green-1)"/>
+      <text x="10" y="3" font-family="monospace" font-size="9" fill="var(--github-text)">
+        Low activity
+      </text>
+      
+      <circle cx="80" cy="0" r="4" fill="var(--github-green-2)"/>
+      <text x="90" y="3" font-family="monospace" font-size="9" fill="var(--github-text)">
+        Medium
+      </text>
+      
+      <circle cx="160" cy="0" r="4" fill="var(--github-green-3)"/>
+      <text x="170" y="3" font-family="monospace" font-size="9" fill="var(--github-text)">
+        High
+      </text>
+      
+      <circle cx="240" cy="0" r="4" fill="var(--github-green-4)"/>
+      <text x="250" y="3" font-family="monospace" font-size="9" fill="var(--github-text)">
+        Very high
+      </text>
+      
+      <rect x="330" y="-4" width="8" height="8" rx="1" fill="var(--matrix-green)"/>
+      <text x="345" y="3" font-family="monospace" font-size="9" fill="var(--matrix-green)">
+        GIF Encoder process
+      </text>
+    </g>
+  </g>
+  
+  <!-- Legend -->
+  <g id="legend" transform="translate(16, 130)">
+    <text x="0" y="0" font-family="monospace" font-size="10" fill="var(--github-text)">
+      <tspan fill="var(--code-blue)">module</tspan>.<tspan fill="var(--code-purple)">exports</tspan> = {
+      <tspan fill="var(--github-green-3)">GIFEncoder</tspan>,
+      <tspan fill="var(--github-green-3)">LZWEncoder</tspan>,
+      <tspan fill="var(--github-green-3)">NeuQuant</tspan>
+      }
+    </text>
+  </g>
 </svg>
