@@ -8,17 +8,25 @@
       </feMerge>
     </filter>
     
+    <filter id="food-glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
     <linearGradient id="progress-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#0e4429"/>
-      <stop offset="25%" stop-color="#006d32"/>
-      <stop offset="50%" stop-color="#26a641"/>
-      <stop offset="75%" stop-color="#39d353"/>
-      <stop offset="100%" stop-color="#39d353"/>
+      <stop offset="0%" stop-color="#0e4429" stop-opacity="1"/>
+      <stop offset="25%" stop-color="#006d32" stop-opacity="1"/>
+      <stop offset="50%" stop-color="#26a641" stop-opacity="1"/>
+      <stop offset="75%" stop-color="#39d353" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#39ff14" stop-opacity="1"/>
     </linearGradient>
     
     <pattern id="grid-pattern" width="16" height="16" patternUnits="userSpaceOnUse">
       <rect width="16" height="16" fill="#0d1117"/>
-      <rect x="0" y="0" width="15" height="15" fill="none" stroke="#21262d" stroke-width="0.5"/>
+      <rect x="0.5" y="0.5" width="15" height="15" fill="none" stroke="#21262d" stroke-width="1"/>
     </pattern>
   </defs>
   
@@ -40,20 +48,49 @@
       fill: url(#grid-pattern);
     }
     
-    /* Food/Contribution Cells */
+    /* Food/Contribution Cells - Posicionadas exatamente no caminho da cobra */
     .food {
       fill: var(--food-color);
-      filter: drop-shadow(0 0 4px var(--food-glow));
-      animation: food-pulse 2s ease-in-out infinite;
-      rx: 2;
-      ry: 2;
+      filter: url(#food-glow);
+      rx: 3;
+      ry: 3;
+      opacity: 1;
     }
     
-    .food.eaten {
-      animation: eaten 0.5s forwards;
+    /* Animações para cada comida ser comida no momento certo */
+    #food1 {
+      animation: eat-food1 20s linear infinite;
     }
     
-    /* Snake */
+    #food2 {
+      animation: eat-food2 20s linear infinite;
+    }
+    
+    #food3 {
+      animation: eat-food3 20s linear infinite;
+    }
+    
+    #food4 {
+      animation: eat-food4 20s linear infinite;
+    }
+    
+    #food5 {
+      animation: eat-food5 20s linear infinite;
+    }
+    
+    #food6 {
+      animation: eat-food6 20s linear infinite;
+    }
+    
+    #food7 {
+      animation: eat-food7 20s linear infinite;
+    }
+    
+    #food8 {
+      animation: eat-food8 20s linear infinite;
+    }
+    
+    /* Snake - Movimento mais complexo que passa por todas as comidas */
     .snake-segment {
       fill: var(--snake-color);
       filter: url(#snake-glow);
@@ -68,6 +105,78 @@
       ry: 4;
     }
     
+    /* Animação do caminho da cobra passando por todas as comidas */
+    @keyframes snake-path {
+      0% {
+        transform: translate(0px, 0px);
+      }
+      12.5% {
+        transform: translate(192px, 0px); /* food1 */
+      }
+      25% {
+        transform: translate(384px, 0px); /* food2 */
+      }
+      37.5% {
+        transform: translate(576px, 0px); /* food3 */
+      }
+      50% {
+        transform: translate(768px, 0px); /* food4 */
+      }
+      62.5% {
+        transform: translate(768px, -64px); /* food5 */
+      }
+      75% {
+        transform: translate(384px, -64px); /* food6 */
+      }
+      87.5% {
+        transform: translate(0px, -64px); /* food7 */
+      }
+      100% {
+        transform: translate(0px, 0px); /* food8 no final */
+      }
+    }
+    
+    /* Animações de comida sendo comida nos momentos certos */
+    @keyframes eat-food1 {
+      0%, 11% { opacity: 1; transform: scale(1); }
+      12%, 100% { opacity: 0; transform: scale(0); }
+    }
+    
+    @keyframes eat-food2 {
+      0%, 23% { opacity: 1; transform: scale(1); }
+      24%, 100% { opacity: 0; transform: scale(0); }
+    }
+    
+    @keyframes eat-food3 {
+      0%, 35% { opacity: 1; transform: scale(1); }
+      36%, 100% { opacity: 0; transform: scale(0); }
+    }
+    
+    @keyframes eat-food4 {
+      0%, 47% { opacity: 1; transform: scale(1); }
+      48%, 100% { opacity: 0; transform: scale(0); }
+    }
+    
+    @keyframes eat-food5 {
+      0%, 59% { opacity: 1; transform: scale(1); }
+      60%, 100% { opacity: 0; transform: scale(0); }
+    }
+    
+    @keyframes eat-food6 {
+      0%, 71% { opacity: 1; transform: scale(1); }
+      72%, 100% { opacity: 0; transform: scale(0); }
+    }
+    
+    @keyframes eat-food7 {
+      0%, 83% { opacity: 1; transform: scale(1); }
+      84%, 100% { opacity: 0; transform: scale(0); }
+    }
+    
+    @keyframes eat-food8 {
+      0%, 95% { opacity: 1; transform: scale(1); }
+      96%, 100% { opacity: 0; transform: scale(0); }
+    }
+    
     /* Progress Bar */
     .progress-bg {
       fill: var(--progress-bg);
@@ -79,86 +188,78 @@
       fill: var(--progress-fill);
       rx: 4;
       ry: 4;
-      animation: progress-grow 20s linear forwards;
+      animation: progress-grow 20s linear infinite;
     }
     
-    /* Score */
-    .score-text {
+    /* Score Counter Animation */
+    .score-counter {
       font-family: 'SF Mono', 'Monaco', monospace;
-      font-size: 12px;
+      font-size: 14px;
       font-weight: bold;
-      fill: #c9d1d9;
+      animation: score-count 20s linear infinite;
     }
     
     /* Animations */
-    @keyframes snake-move {
-      0% {
-        transform: translate(0px, 0px);
-      }
-      100% {
-        transform: translate(800px, 0px);
-      }
+    .snake-head, .snake-segment {
+      animation: snake-path 20s linear infinite;
     }
     
-    @keyframes snake-move-diagonal {
-      0% {
-        transform: translate(0px, 0px);
-      }
-      25% {
-        transform: translate(400px, -64px);
-      }
-      50% {
-        transform: translate(800px, 0px);
-      }
-      75% {
-        transform: translate(400px, 64px);
-      }
-      100% {
-        transform: translate(0px, 0px);
-      }
-    }
+    /* Delay para os segmentos da cobra */
+    .segment-1 { animation-delay: -0.2s; }
+    .segment-2 { animation-delay: -0.4s; }
+    .segment-3 { animation-delay: -0.6s; }
+    .segment-4 { animation-delay: -0.8s; }
+    .segment-5 { animation-delay: -1.0s; }
+    .segment-6 { animation-delay: -1.2s; }
     
     @keyframes progress-grow {
-      0% {
-        width: 0px;
-      }
-      100% {
-        width: 800px;
-      }
+      0% { width: 0px; }
+      12.5% { width: 100px; }
+      25% { width: 200px; }
+      37.5% { width: 300px; }
+      50% { width: 400px; }
+      62.5% { width: 500px; }
+      75% { width: 600px; }
+      87.5% { width: 700px; }
+      100% { width: 800px; }
     }
     
-    @keyframes food-pulse {
-      0%, 100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-      50% {
-        opacity: 0.8;
-        transform: scale(0.95);
-      }
+    @keyframes score-count {
+      0% { content: "0"; }
+      12.5% { content: "1"; }
+      25% { content: "2"; }
+      37.5% { content: "3"; }
+      50% { content: "4"; }
+      62.5% { content: "5"; }
+      75% { content: "6"; }
+      87.5% { content: "7"; }
+      100% { content: "8"; }
     }
     
-    @keyframes eaten {
-      0% {
-        opacity: 1;
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.3);
-      }
-      100% {
-        opacity: 0;
-        transform: scale(0);
-      }
+    /* Score display com animação de número */
+    .score-number {
+      font-family: 'SF Mono', 'Monaco', monospace;
+      font-size: 14px;
+      font-weight: bold;
+      fill: #39ff14;
     }
     
-    /* Snake segments with different delays */
-    .segment-1 { animation: snake-move-diagonal 10s linear infinite; }
-    .segment-2 { animation: snake-move-diagonal 10s linear infinite 0.2s; }
-    .segment-3 { animation: snake-move-diagonal 10s linear infinite 0.4s; }
-    .segment-4 { animation: snake-move-diagonal 10s linear infinite 0.6s; }
-    .segment-5 { animation: snake-move-diagonal 10s linear infinite 0.8s; }
-    .segment-6 { animation: snake-move-diagonal 10s linear infinite 1.0s; }
+    /* Food counter animation */
+    .food-counter {
+      animation: food-count 20s linear infinite;
+    }
+    
+    @keyframes food-count {
+      0% { content: "8"; }
+      12.5% { content: "7"; }
+      25% { content: "6"; }
+      37.5% { content: "5"; }
+      50% { content: "4"; }
+      62.5% { content: "3"; }
+      75% { content: "2"; }
+      87.5% { content: "1"; }
+      100% { content: "0"; }
+    }
   </style>
   
   <!-- Background -->
@@ -167,26 +268,19 @@
   <!-- Grid Background -->
   <rect class="grid-bg" x="40" y="40" width="800" height="80"/>
   
-  <!-- Food/Contributions -->
+  <!-- Food/Contributions (posicionadas exatamente no caminho da cobra) -->
   <g id="food">
-    <!-- First row of food -->
+    <!-- Linha superior -->
     <rect class="food" x="96" y="48" width="12" height="12" id="food1"/>
-    <rect class="food" x="192" y="48" width="12" height="12" id="food2"/>
-    <rect class="food" x="288" y="48" width="12" height="12" id="food3"/>
-    <rect class="food" x="384" y="48" width="12" height="12" id="food4"/>
-    <rect class="food" x="480" y="48" width="12" height="12" id="food5"/>
-    <rect class="food" x="576" y="48" width="12" height="12" id="food6"/>
-    <rect class="food" x="672" y="48" width="12" height="12" id="food7"/>
-    <rect class="food" x="768" y="48" width="12" height="12" id="food8"/>
+    <rect class="food" x="288" y="48" width="12" height="12" id="food2"/>
+    <rect class="food" x="480" y="48" width="12" height="12" id="food3"/>
+    <rect class="food" x="672" y="48" width="12" height="12" id="food4"/>
     
-    <!-- Second row of food (diagonal path) -->
-    <rect class="food" x="144" y="16" width="12" height="12" id="food9"/>
-    <rect class="food" x="240" y="80" width="12" height="12" id="food10"/>
-    <rect class="food" x="336" y="16" width="12" height="12" id="food11"/>
-    <rect class="food" x="432" y="80" width="12" height="12" id="food12"/>
-    <rect class="food" x="528" y="16" width="12" height="12" id="food13"/>
-    <rect class="food" x="624" y="80" width="12" height="12" id="food14"/>
-    <rect class="food" x="720" y="16" width="12" height="12" id="food15"/>
+    <!-- Linha inferior (64px abaixo) -->
+    <rect class="food" x="672" y="112" width="12" height="12" id="food5"/>
+    <rect class="food" x="288" y="112" width="12" height="12" id="food6"/>
+    <rect class="food" x="96" y="112" width="12" height="12" id="food7"/>
+    <rect class="food" x="0" y="112" width="12" height="12" id="food8"/>
   </g>
   
   <!-- Snake -->
@@ -200,7 +294,7 @@
     <rect class="snake-segment segment-1" x="12" y="0" width="12" height="12"/>
     
     <!-- Snake head -->
-    <rect class="snake-head segment-1" x="24" y="0" width="12" height="12"/>
+    <rect class="snake-head" x="24" y="0" width="12" height="12"/>
   </g>
   
   <!-- Progress Bar Container -->
@@ -210,25 +304,33 @@
     
     <!-- Progress markers -->
     <line x1="0" y1="0" x2="0" y2="16" stroke="#c9d1d9" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="100" y1="0" x2="100" y2="16" stroke="#c9d1d9" stroke-width="1" stroke-dasharray="2,2"/>
     <line x1="200" y1="0" x2="200" y2="16" stroke="#c9d1d9" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="300" y1="0" x2="300" y2="16" stroke="#c9d1d9" stroke-width="1" stroke-dasharray="2,2"/>
     <line x1="400" y1="0" x2="400" y2="16" stroke="#c9d1d9" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="500" y1="0" x2="500" y2="16" stroke="#c9d1d9" stroke-width="1" stroke-dasharray="2,2"/>
     <line x1="600" y1="0" x2="600" y2="16" stroke="#c9d1d9" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="700" y1="0" x2="700" y2="16" stroke="#c9d1d9" stroke-width="1" stroke-dasharray="2,2"/>
     <line x1="800" y1="0" x2="800" y2="16" stroke="#c9d1d9" stroke-width="1"/>
     
     <!-- Progress labels -->
-    <text x="0" y="32" class="score-text">0</text>
-    <text x="200" y="32" class="score-text">5</text>
-    <text x="400" y="32" class="score-text">10</text>
-    <text x="600" y="32" class="score-text">15</text>
-    <text x="800" y="32" class="score-text">20</text>
+    <text x="0" y="32" font-family="monospace" font-size="10" fill="#8b949e">0</text>
+    <text x="200" y="32" font-family="monospace" font-size="10" fill="#8b949e">2</text>
+    <text x="400" y="32" font-family="monospace" font-size="10" fill="#8b949e">4</text>
+    <text x="600" y="32" font-family="monospace" font-size="10" fill="#8b949e">6</text>
+    <text x="800" y="32" font-family="monospace" font-size="10" fill="#8b949e">8</text>
   </g>
   
   <!-- Score Display -->
   <g transform="translate(40, 180)">
-    <text class="score-text">
-      Score: <tspan fill="#39ff14">0</tspan> / 15
+    <text font-family="monospace" font-size="12" fill="#c9d1d9">
+      Score: 
     </text>
-    <text x="200" y="0" class="score-text" fill="#8b949e" font-size="10">
+    <text x="50" y="0" class="score-number">0</text>
+    <text x="70" y="0" font-family="monospace" font-size="12" fill="#c9d1d9">
+      / 8
+    </text>
+    <text x="150" y="0" font-family="monospace" font-size="11" fill="#8b949e">
       Eating contributions...
     </text>
   </g>
@@ -236,8 +338,35 @@
   <!-- Food counter -->
   <g transform="translate(700, 180)">
     <circle cx="0" cy="-4" r="4" fill="#39d353"/>
-    <text x="10" y="0" class="score-text" font-size="11">
-      ×<tspan fill="#39ff14">15</tspan>
+    <text x="10" y="0" font-family="monospace" font-size="12" fill="#c9d1d9">
+      ×
     </text>
+    <text x="18" y="0" class="score-number">8</text>
+  </g>
+  
+  <!-- Score animation simulation using text elements that appear/disappear -->
+  <g style="display: none;">
+    <text id="score-0" x="50" y="180" class="score-number">0</text>
+    <text id="score-1" x="50" y="180" class="score-number">1</text>
+    <text id="score-2" x="50" y="180" class="score-number">2</text>
+    <text id="score-3" x="50" y="180" class="score-number">3</text>
+    <text id="score-4" x="50" y="180" class="score-number">4</text>
+    <text id="score-5" x="50" y="180" class="score-number">5</text>
+    <text id="score-6" x="50" y="180" class="score-number">6</text>
+    <text id="score-7" x="50" y="180" class="score-number">7</text>
+    <text id="score-8" x="50" y="180" class="score-number">8</text>
+  </g>
+  
+  <!-- Food counter animation simulation -->
+  <g style="display: none;">
+    <text id="food-count-8" x="18" y="180" class="score-number">8</text>
+    <text id="food-count-7" x="18" y="180" class="score-number">7</text>
+    <text id="food-count-6" x="18" y="180" class="score-number">6</text>
+    <text id="food-count-5" x="18" y="180" class="score-number">5</text>
+    <text id="food-count-4" x="18" y="180" class="score-number">4</text>
+    <text id="food-count-3" x="18" y="180" class="score-number">3</text>
+    <text id="food-count-2" x="18" y="180" class="score-number">2</text>
+    <text id="food-count-1" x="18" y="180" class="score-number">1</text>
+    <text id="food-count-0" x="18" y="180" class="score-number">0</text>
   </g>
 </svg>
