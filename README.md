@@ -31,7 +31,7 @@
 
 
 <div align="center">
-  <img src="https://github.com/joaz0/joaz0/blob/output/github-contribution-grid-snake.svg" alt="Snake animation">
+![Snake animation](https://raw.githubusercontent.com/platane/snk/output/github-contribution-grid-snake.svg)
 </div>
 
 ## Aprendendo Atualmente
