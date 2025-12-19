@@ -1,258 +1,158 @@
 <svg width="800" height="200" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <filter id="snake-glow">
-      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
-      <feMerge>
-        <feMergeNode in="coloredBlur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    
-    <linearGradient id="progress-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#0e4429"/>
-      <stop offset="50%" stop-color="#26a641"/>
-      <stop offset="100%" stop-color="#39ff14"/>
-    </linearGradient>
-  </defs>
-  
   <style>
-    /* Grid styles */
-    .grid-square {
-      fill: #161b22;
-      rx: 2;
-      ry: 2;
-    }
+    /* Background */
+    rect.bg { fill: #0d1117; }
     
-    .level-0 { fill: #161b22; }
-    .level-1 { fill: #0e4429; }
-    .level-2 { fill: #006d32; }
-    .level-3 { fill: #26a641; }
-    .level-4 { fill: #39d353; }
+    /* Grid cells */
+    rect.cell { fill: #161b22; rx: 2; ry: 2; }
+    rect.cell.filled { fill: #26a641; animation: pulse 1s infinite; }
+    rect.cell.eaten { animation: eaten 0.5s forwards; }
     
-    .level-3, .level-4 {
-      animation: pulse 2s ease-in-out infinite;
-    }
+    /* Snake */
+    rect.snake-body { fill: #00ff41; rx: 3; ry: 3; filter: drop-shadow(0 0 2px #00ff41); }
+    rect.snake-head { fill: #39ff14; rx: 3; ry: 3; filter: drop-shadow(0 0 4px #39ff14); }
     
-    .level-3 { animation-delay: 0.5s; }
-    .level-4 { animation-delay: 1s; }
+    /* Progress */
+    rect.progress-bg { fill: #161b22; rx: 3; ry: 3; }
+    rect.progress-fill { fill: #39d353; rx: 3; ry: 3; }
     
-    /* Snake styles */
-    .snake-body {
-      fill: #00ff41;
-      filter: url(#snake-glow);
-      rx: 3;
-      ry: 3;
-    }
-    
-    .snake-head {
-      fill: #39ff14;
-      filter: url(#snake-glow);
-      rx: 4;
-      ry: 4;
-    }
-    
-    /* Progress bar */
-    .progress-bg {
-      fill: #161b22;
-      rx: 4;
-      ry: 4;
-      stroke: #30363d;
-      stroke-width: 1;
-    }
-    
-    .progress-fill {
-      fill: url(#progress-gradient);
-      rx: 4;
-      ry: 4;
-    }
-    
-    /* Text styles */
-    .text {
-      font-family: 'Segoe UI', 'Monaco', monospace;
-      font-size: 11px;
-      fill: #c9d1d9;
-    }
-    
-    .highlight {
-      fill: #39ff14;
-      font-weight: bold;
-    }
-    
-    .username {
-      fill: #58a6ff;
-      font-weight: bold;
-    }
+    /* Text */
+    text { font-family: monospace; font-size: 11px; fill: #c9d1d9; }
+    text.score { fill: #39ff14; font-weight: bold; }
+    text.label { fill: #8b949e; }
     
     /* Animations */
-    @keyframes snake-move {
-      0% {
-        transform: translate(0px, 40px);
-      }
-      20% {
-        transform: translate(160px, 40px);
-      }
-      40% {
-        transform: translate(320px, 40px);
-      }
-      60% {
-        transform: translate(480px, 40px);
-      }
-      80% {
-        transform: translate(320px, 80px);
-      }
-      100% {
-        transform: translate(0px, 40px);
-      }
-    }
-    
-    @keyframes progress-grow {
-      0% {
-        width: 0px;
-      }
-      20% {
-        width: 100px;
-      }
-      40% {
-        width: 200px;
-      }
-      60% {
-        width: 300px;
-      }
-      80% {
-        width: 200px;
-      }
-      100% {
-        width: 0px;
-      }
+    @keyframes move {
+      0% { transform: translate(0px, 0px); }
+      20% { transform: translate(160px, 0px); }
+      40% { transform: translate(320px, 0px); }
+      60% { transform: translate(480px, 0px); }
+      80% { transform: translate(480px, 40px); }
+      100% { transform: translate(0px, 40px); }
     }
     
     @keyframes pulse {
       0%, 100% { opacity: 1; }
-      50% { opacity: 0.7; }
+      50% { opacity: 0.6; }
     }
     
-    @keyframes food-blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
+    @keyframes eaten {
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.2); }
+      100% { opacity: 0; transform: scale(0); }
     }
     
-    /* Apply animations */
-    .snake-animation {
-      animation: snake-move 10s linear infinite;
+    @keyframes progress {
+      0% { width: 0px; }
+      20% { width: 160px; }
+      40% { width: 320px; }
+      60% { width: 480px; }
+      80% { width: 480px; }
+      100% { width: 480px; }
     }
     
-    .segment-1 { animation-delay: -0.2s; }
-    .segment-2 { animation-delay: -0.4s; }
-    .segment-3 { animation-delay: -0.6s; }
-    .segment-4 { animation-delay: -0.8s; }
-    .segment-5 { animation-delay: -1.0s; }
+    /* Snake animation with delays */
+    .snake-head, .snake-body { animation: move 10s linear infinite; }
+    .body-1 { animation-delay: -0.2s; }
+    .body-2 { animation-delay: -0.4s; }
+    .body-3 { animation-delay: -0.6s; }
+    .body-4 { animation-delay: -0.8s; }
     
-    .progress-animation {
-      animation: progress-grow 10s linear infinite;
-    }
+    /* Food eaten animations */
+    .food-1 { animation: eaten 10s linear infinite 2s; }
+    .food-2 { animation: eaten 10s linear infinite 4s; }
+    .food-3 { animation: eaten 10s linear infinite 6s; }
+    .food-4 { animation: eaten 10s linear infinite 8s; }
     
-    .food {
-      animation: food-blink 1s ease-in-out infinite;
-    }
+    /* Progress animation */
+    .progress-animation { animation: progress 10s linear infinite; }
   </style>
   
   <!-- Background -->
-  <rect width="800" height="200" fill="#0d1117"/>
-  
-  <!-- Profile Section -->
-  <rect x="20" y="20" width="150" height="120" fill="#161b22" rx="6" ry="6"/>
-  
-  <!-- Avatar -->
-  <circle cx="95" cy="60" r="25" fill="#21262d"/>
-  <text x="95" y="65" text-anchor="middle" font-size="18" fill="#8b949e" font-family="monospace">👨‍💻</text>
-  
-  <!-- Username -->
-  <text class="text username" x="95" y="100" text-anchor="middle">@seuusuario</text>
-  
-  <!-- Stats -->
-  <text class="text" x="95" y="115" text-anchor="middle">Repos: <tspan class="highlight">42</tspan></text>
-  <text class="text" x="95" y="130" text-anchor="middle">Commits: <tspan class="highlight">128</tspan></text>
+  <rect class="bg" width="800" height="200"/>
   
   <!-- Grid -->
-  <g transform="translate(190, 30)">
-    <!-- Generate 7x5 grid -->
-    <g>
+  <g transform="translate(20, 20)">
+    <!-- Grid background -->
+    <rect x="0" y="0" width="480" height="80" fill="#0d1117" rx="4"/>
+    
+    <!-- Grid cells -->
+    <g transform="translate(10, 10)">
       <!-- Row 0 -->
-      <rect class="grid-square level-1" x="0" y="0" width="10" height="10"/>
-      <rect class="grid-square level-2" x="14" y="0" width="10" height="10"/>
-      <rect class="grid-square level-3" x="28" y="0" width="10" height="10"/>
-      <rect class="grid-square level-4" x="42" y="0" width="10" height="10"/>
-      <rect class="grid-square level-3" x="56" y="0" width="10" height="10"/>
-      <rect class="grid-square level-2" x="70" y="0" width="10" height="10"/>
-      <rect class="grid-square level-1" x="84" y="0" width="10" height="10"/>
+      <rect class="cell" x="0" y="0" width="10" height="10"/>
+      <rect class="cell filled food-1" x="20" y="0" width="10" height="10"/>
+      <rect class="cell" x="40" y="0" width="10" height="10"/>
+      <rect class="cell filled food-2" x="60" y="0" width="10" height="10"/>
+      <rect class="cell" x="80" y="0" width="10" height="10"/>
+      <rect class="cell" x="100" y="0" width="10" height="10"/>
+      <rect class="cell filled food-3" x="120" y="0" width="10" height="10"/>
+      <rect class="cell" x="140" y="0" width="10" height="10"/>
+      <rect class="cell" x="160" y="0" width="10" height="10"/>
+      <rect class="cell" x="180" y="0" width="10" height="10"/>
       
       <!-- Row 1 -->
-      <rect class="grid-square level-2" x="0" y="14" width="10" height="10"/>
-      <rect class="grid-square level-3" x="14" y="14" width="10" height="10"/>
-      <rect class="grid-square level-4" x="28" y="14" width="10" height="10"/>
-      <rect class="grid-square level-3" x="42" y="14" width="10" height="10"/>
-      <rect class="grid-square level-4" x="56" y="14" width="10" height="10"/>
-      <rect class="grid-square level-3" x="70" y="14" width="10" height="10"/>
-      <rect class="grid-square level-2" x="84" y="14" width="10" height="10"/>
+      <rect class="cell" x="0" y="20" width="10" height="10"/>
+      <rect class="cell" x="20" y="20" width="10" height="10"/>
+      <rect class="cell" x="40" y="20" width="10" height="10"/>
+      <rect class="cell" x="60" y="20" width="10" height="10"/>
+      <rect class="cell" x="80" y="20" width="10" height="10"/>
+      <rect class="cell" x="100" y="20" width="10" height="10"/>
+      <rect class="cell" x="120" y="20" width="10" height="10"/>
+      <rect class="cell" x="140" y="20" width="10" height="10"/>
+      <rect class="cell" x="160" y="20" width="10" height="10"/>
+      <rect class="cell" x="180" y="20" width="10" height="10"/>
       
       <!-- Row 2 -->
-      <rect class="grid-square level-3" x="0" y="28" width="10" height="10"/>
-      <rect class="grid-square level-4" x="14" y="28" width="10" height="10"/>
-      <rect class="grid-square level-3" x="28" y="28" width="10" height="10"/>
-      <rect class="grid-square level-4" x="42" y="28" width="10" height="10"/>
-      <rect class="grid-square level-3" x="56" y="28" width="10" height="10"/>
-      <rect class="grid-square level-4" x="70" y="28" width="10" height="10"/>
-      <rect class="grid-square level-3" x="84" y="28" width="10" height="10"/>
-      
-      <!-- Row 3 -->
-      <rect class="grid-square level-1" x="0" y="42" width="10" height="10"/>
-      <rect class="grid-square level-2" x="14" y="42" width="10" height="10"/>
-      <rect class="grid-square level-3" x="28" y="42" width="10" height="10"/>
-      <rect class="grid-square level-4" x="42" y="42" width="10" height="10"/>
-      <rect class="grid-square level-3" x="56" y="42" width="10" height="10"/>
-      <rect class="grid-square level-2" x="70" y="42" width="10" height="10"/>
-      <rect class="grid-square level-1" x="84" y="42" width="10" height="10"/>
-      
-      <!-- Row 4 -->
-      <rect class="grid-square level-2" x="0" y="56" width="10" height="10"/>
-      <rect class="grid-square level-3" x="14" y="56" width="10" height="10"/>
-      <rect class="grid-square level-4" x="28" y="56" width="10" height="10"/>
-      <rect class="grid-square level-3" x="42" y="56" width="10" height="10"/>
-      <rect class="grid-square level-4" x="56" y="56" width="10" height="10"/>
-      <rect class="grid-square level-3" x="70" y="56" width="10" height="10"/>
-      <rect class="grid-square level-2" x="84" y="56" width="10" height="10"/>
+      <rect class="cell" x="0" y="40" width="10" height="10"/>
+      <rect class="cell" x="20" y="40" width="10" height="10"/>
+      <rect class="cell" x="40" y="40" width="10" height="10"/>
+      <rect class="cell" x="60" y="40" width="10" height="10"/>
+      <rect class="cell filled food-4" x="80" y="40" width="10" height="10"/>
+      <rect class="cell" x="100" y="40" width="10" height="10"/>
+      <rect class="cell" x="120" y="40" width="10" height="10"/>
+      <rect class="cell" x="140" y="40" width="10" height="10"/>
+      <rect class="cell" x="160" y="40" width="10" height="10"/>
+      <rect class="cell" x="180" y="40" width="10" height="10"/>
     </g>
     
-    <!-- Food dots -->
-    <rect class="food" x="70" y="0" width="8" height="8" fill="#39d353"/>
-    <rect class="food" x="28" y="14" width="8" height="8" fill="#39d353"/>
-    <rect class="food" x="56" y="28" width="8" height="8" fill="#39d353"/>
-    <rect class="food" x="14" y="42" width="8" height="8" fill="#39d353"/>
-    <rect class="food" x="70" y="56" width="8" height="8" fill="#39d353"/>
-    
     <!-- Snake -->
-    <g class="snake-animation">
+    <g transform="translate(10, 10)">
       <!-- Snake body -->
-      <rect class="snake-body segment-5" x="-40" y="0" width="10" height="10"/>
-      <rect class="snake-body segment-4" x="-30" y="0" width="10" height="10"/>
-      <rect class="snake-body segment-3" x="-20" y="0" width="10" height="10"/>
-      <rect class="snake-body segment-2" x="-10" y="0" width="10" height="10"/>
-      <rect class="snake-body segment-1" x="0" y="0" width="10" height="10"/>
+      <rect class="snake-body body-4" x="-30" y="0" width="10" height="10"/>
+      <rect class="snake-body body-3" x="-20" y="0" width="10" height="10"/>
+      <rect class="snake-body body-2" x="-10" y="0" width="10" height="10"/>
+      <rect class="snake-body body-1" x="0" y="0" width="10" height="10"/>
       
       <!-- Snake head -->
       <rect class="snake-head" x="0" y="0" width="10" height="10"/>
     </g>
   </g>
   
-  <!-- Progress Bar -->
-  <g transform="translate(190, 120)">
-    <rect class="progress-bg" x="0" y="0" width="300" height="12"/>
-    <rect class="progress-fill progress-animation" x="0" y="0" width="0" height="12"/>
+  <!-- Progress bar -->
+  <g transform="translate(20, 120)">
+    <rect class="progress-bg" x="0" y="0" width="480" height="10"/>
+    <rect class="progress-fill progress-animation" x="0" y="0" width="0" height="10"/>
     
-    <text class="text" x="0" y="30">Contribuições coletadas: <tspan class="highlight">0</tspan>/5</text>
+    <!-- Progress text -->
+    <text x="0" y="25" class="label">Progresso:</text>
+    <text x="65" y="25" class="score">0</text>
+    <text x="75" y="25" class="label">/ 4 contribuições</text>
   </g>
   
-  <!-- Footer text -->
-  <text class="text" x="190" y="170">🐍 Cobrinha devorando contribuições do GitHub...</text>
-  <text class="text" x="190" y="185">Atualizado: <tspan class="highlight">Agora</tspan></text>
+  <!-- Score -->
+  <g transform="translate(20, 160)">
+    <text x="0" y="0" class="label">Cobrinha está comendo suas contribuições...</text>
+  </g>
+  
+  <!-- Simple stats -->
+  <g transform="translate(520, 20)">
+    <text x="0" y="0" class="label">Contribuições hoje:</text>
+    <text x="120" y="0" class="score">4</text>
+    
+    <text x="0" y="20" class="label">Total esta semana:</text>
+    <text x="120" y="20" class="score">12</text>
+    
+    <text x="0" y="40" class="label">Recorde seguido:</text>
+    <text x="120" y="40" class="score">8 dias</text>
+  </g>
 </svg>
