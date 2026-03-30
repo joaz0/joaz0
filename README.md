@@ -10,16 +10,16 @@
 
 ## GitHub Stats
 
-<div align="center">
-  <a href="https://github.com/joaz0">
-    <img src="https://github-readme-stats.vercel.app/apijoaz0&layout=compact&theme=github_dark_dimmed&show_icons=true&hide_border=true" alt="GitHub Stats" />  
-  </a>
+<div align="center">    
+
+  <img src="https://github-readme-stats.vercel.app/api/?joaz0&layout=compact&theme=github_dark_dimmed&show_icons=true&hide_border=true" alt="GitHub Stats"/>                
+
 </div>
 
 <div align="center">
-  <a href="https://github.com/joaz0">
-    <img src="https://github-readme-stats.vercel.app/api/top-langs/joaz0&layout=compact&langs_count=10&theme=github_dark_dimmed&include_all_commits=true&hide_border=true" alt="Top Languages" />  
-  </a>
+  
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/joaz0&layout=compact&langs_count=10&theme=github_dark_dimmed&include_all_commits=true&hide_border=true" alt="Top Languages" />  
+
 </div>
 
 
@@ -27,7 +27,7 @@
 <div align="center">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg" height="40" alt="angular logo" />
   <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" height="40" alt="typescript logo" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" altura="40" alt="logo-tipo tipográfico" />  
   <img width="12" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="40" alt="javascript logo" />
   <img width="12" />
